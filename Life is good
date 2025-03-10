@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleHub - Fashion & Footwear</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            padding: 0.8rem 2rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 250px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #3498db;
+        }
+        
+        .feedback-section {
+            background-color: #2c3e50;
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .feedback-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .feedback-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            padding: 0.8rem 2rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            justify-self: start;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .footer-section p, .footer-section a {
+            margin-bottom: 0.8rem;
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #3498db;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            background-color: #34495e;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #3498db;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            margin-top: 2rem;
+            grid-column: 1 / -1;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">StyleHub</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#clothes">Clothes</a>
+                <a href="#shoes">Shoes</a>
+                <a href="#feedback">Feedback</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1>Discover Your Style</h1>
+        <p>Explore our curated collection of premium clothing and footwear designed for comfort and style.</p>
+        <button class="cta-button">Shop Now</button>
+    </section>
+    
+    <section class="container" id="clothes">
+        <h2 class="section-title">Clothing Collection</h2>
+        
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Men</button>
+            <button class="category-btn">Women</button>
+            <button class="category-btn">Kids</button>
+        </div>
+        
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Casual T-Shirt">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Premium Cotton T-Shirt</h3>
+                    <p class="product-price">$29.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Denim Jeans">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Classic Denim Jeans</h3>
+                    <p class="product-price">$59.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Summer Dress">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Floral Summer Dress</h3>
+                    <p class="product-price">$45.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Hoodie">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Cozy Hoodie</h3>
+                    <p class="product-price">$39.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container" id="shoes">
+        <h2 class="section-title">Footwear Collection</h2>
+        
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Sneakers</button>
+            <button class="category-btn">Formal</button>
+            <button class="category-btn">Sports</button>
+        </div>
+        
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Running Shoes">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Performance Running Shoes</h3>
+                    <p class="product-price">$89.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Leather Boots">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Classic Leather Boots</h3>
+                    <p class="product-price">$129.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Casual Sneakers">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Urban Casual Sneakers</h3>
+                    <p class="product-price">$75.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/250/250" alt="Formal Shoes">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Business Formal Shoes</h3>
+                    <p class="product-price">$109.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="feedback-section" id="feedback">
+        <div class="feedback-container">
+            <h2 class="section-title" style="color: white;">We Value Your Feedback</h2>
+            
+            <form class="feedback-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedback">Your Feedback</label>
+                    <textarea id="feedback" placeholder="Please share your experience with our products and service..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About StyleHub</h3>
+                <p>StyleHub is your one-stop destination for quality clothing and footwear. We offer a wide range of products for men, women, and kids.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#clothes">Clothes</a>
+                <a href="#shoes">Shoes</a>
+                <a href="#feedback">Feedback</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <span>📞</span>
+                    <p>(123) 456-7890</p>
+                </div>
+                <div class="contact-info">
+                    <span>✉️</span>
+                    <p>info@stylehub.com</p>
+                </div>
+                <div class="contact-info">
+                    <span>📍</span>
+                    <p>123 Fashion Street, Style City</p>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">TW</a>
+                    <a href="#">PT</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 StyleHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
